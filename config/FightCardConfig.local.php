@@ -41,7 +41,7 @@ namespace FightCard;
  */
 return array(
     __NAMESPACE__ => array(
-        // set the fightcard size, -1 for unlimited.
+        // set the fightcard size, -1 for unlimited.<
         'FightCardSize' => 10,
     ),
     
