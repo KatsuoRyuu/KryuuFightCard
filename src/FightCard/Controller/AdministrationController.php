@@ -61,6 +61,6 @@ class AdministrationController extends ConstantsController {
             'addFighter'        =>  self::ADD_FIGHTER,
             'editFighter'       =>  self::EDIT_FIGHTER,
             'deleteFighter'     =>  self::DELETE_FIGHTER,
-            );
+        );
     }
 }

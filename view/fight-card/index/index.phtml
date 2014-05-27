@@ -26,3 +26,27 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 -->
 
+<h3>Fighters</h3>
+<table>
+    
+    <tr>
+        <th>Name</th>
+        <th>Gym</th>
+        <th>Country</th>
+    </tr>
+    
+    <?php foreach ($fighters as $fighter) : ?>
+    <tr>
+        <td><?= $fighter->__get('firstname') ?> <?= $fighter->__get('lastname') ?></td>
+        <td><?= $fighter->__get('gym') ?></td>
+        <td><?= $fighter->__get('country') ?></td>
+    </tr>
+    <tr>
+        <td colspan="3">Wins:<?= $fighter->__get('wins') ?> Loss:<?= $fighter->__get('loss') ?> Draw:<?= $fighter->__get('draw') ?></td>
+    </tr>
+    <tr>
+        <td colspan="3"> Championships</td>
+    </tr>
+    <?php endforeach; ?>
+    
+</table>

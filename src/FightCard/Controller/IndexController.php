@@ -49,7 +49,23 @@ class IndexController extends ConstantsController
 	
     public function indexAction()
     {
-        return new ViewModel();
+        $fighter = $this->getEntityManager()->getRepository(self::FIGHTER)->findAll();
+        
+        $championship = $this->getEntityManager()->getRepository(self::CHAMPIONSHIP)->findAll();
+
+        return array(
+            'fighters'          =>  $fighter,
+            'championships'     =>  $championship,
+            'administration'    =>  self::ADMINISTRATION,
+            
+            'addChampionship'   =>  self::ADD_CHAMPIONSHIP,
+            'editChampionship'  =>  self::EDIT_CHAMPIONSHIP,
+            'deleteChampionship'=>  self::DELETE_CHAMPIONSHIP,
+            
+            'addFighter'        =>  self::ADD_FIGHTER,
+            'editFighter'       =>  self::EDIT_FIGHTER,
+            'deleteFighter'     =>  self::DELETE_FIGHTER,
+        );
     }
     
 }

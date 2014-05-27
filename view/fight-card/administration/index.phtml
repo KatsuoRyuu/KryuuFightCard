@@ -26,6 +26,28 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 -->
 <h3>Matches</h3>
+<a href="<?= $this->url($createFight) ?>">Create fight</a>
+<table>
+    
+    <tr>
+        <th>Name</th>
+        <th>vs</th>
+        <th>Name</th>
+        <th></th>
+        <th></th>
+    </tr>
+    
+    <?php foreach ($championships as $championship) : ?>
+    <tr>
+        <td><?= $championship->__get('name') ?></td>
+        <td><?= $championship->__get('name') ?></td>
+        <td><?= $championship->__get('name') ?></td>
+        <td><a href="<?= $this->url($editChampionship,array('id'=>$championship->__get('id'))) ?>">Edit</a></td>
+        <td><a href="<?= $this->url($deleteChampionship, array('id'=>$championship->__get('id'))) ?>" onclick="return confirm('Are you sure?')">Delete</a></td>
+    </tr>
+    <?php endforeach; ?>
+    
+</table>
 
 
 <h3>Championships</h3>
@@ -33,7 +55,7 @@ THE SOFTWARE.
 <table>
     
     <tr>
-        <th>Name</th>
+        <th>Name </th>
         <th colspan="2">Admin</th>
     </tr>
     
@@ -46,6 +68,8 @@ THE SOFTWARE.
     <?php endforeach; ?>
     
 </table>
+
+
 <h3>Fighters</h3>
 <a href="<?= $this->url($addFighter) ?>">Add fighter</a>
 <table>
