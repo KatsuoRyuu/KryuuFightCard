@@ -35,21 +35,45 @@ namespace FightCard\Controller;
  * THE SOFTWARE.
  *
 
- * @version 20140506 
+ * @version 20140527 
  * @link https://github.com/KatsuoRyuu/
  */
 
-use Zend\View\Model\ViewModel;
 use FightCard\Controller\EntityUsingController;
 
-class IndexController extends EntityUsingController
-{
-	
-	protected $ContactTable;
-	
-    public function indexAction()
-    {
-        return new ViewModel();
-    }
+class AdministrationController extends EntityUsingController {
     
+    const ADMINISTRATION        = 'fightcard/administartion';
+    
+    const ADD_CHAMPIONSHIP      = 'fightcard/championship/add';
+    const EDIT_CHAMPIONSHIP     = 'fightcard/championship/edit';
+    const DELETE_CHAMPIONSHIP   = 'fightcard/championship/edit';
+    
+    const ADD_FIGHTER           = 'fightcard/fighter/add';
+    const EDIT_FIGHTER          = 'fightcard/fighter/edit';
+    const DELETE_FIGHTER        = 'fightcard/fighter/edit';
+
+    const FIGHTER               = 'FightCard\Entity\Fighter';
+    const CHAMPIONSHIP          = 'FightCard\Entity\Championship';
+    
+    public function indexAction(){
+        
+        $fighter = $this->getEntityManager()->getRepository(self::FIGHTER)->findAll();
+        
+        $championship = $this->getEntityManager()->getRepository(self::CHAMPIONSHIP)->findAll();
+
+        return array(
+            'fighters'          =>  $fighter,
+            'championships'     =>  $championship,
+            'administration'    =>  self::ADMINISTRATION,
+            
+            'addChampionship'   =>  self::ADD_CHAMPIONSHIP,
+            'editChampionship'  =>  self::EDIT_CHAMPIONSHIP,
+            'deleteChampionship'=>  self::DELETE_CHAMPIONSHIP,
+            
+            'addFighter'        =>  self::ADD_FIGHTER,
+            'editFighter'       =>  self::EDIT_FIGHTER,
+            'deleteFighter'     =>  self::DELETE_FIGHTER,
+            );
+    }
 }

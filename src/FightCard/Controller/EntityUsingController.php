@@ -1,5 +1,5 @@
 <?php
-namespace Contact\Controller;
+namespace FightCard\Controller;
 
 /**
  * @encoding UTF-8

@@ -5,7 +5,10 @@ namespace FightCard;
 return array(
     'controllers' => array(
         'invokables' => array(
-            'FightCard\Controller\Index' => 'FightCard\Controller\IndexController',
+            'FightCard\Controller\Index'            => 'FightCard\Controller\IndexController',
+            'FightCard\Controller\Administration'   => 'FightCard\Controller\AdministrationController',
+            'FightCard\Controller\Championship'     => 'FightCard\Controller\ChampionshipController',
+            'FightCard\Controller\Fighter'          => 'FightCard\Controller\FighterController',
         ),
     ),
 
@@ -18,6 +21,58 @@ return array(
                     'defaults' => array(
                         'controller'    => 'FightCard\Controller\Index',
                         'action'        => 'index',
+                    ),
+                ),
+                'may_terminate' => true,
+                'child_routes' => array(
+                    'fighter' => array(
+                        'type' => 'literal',
+                        'options' => array(
+                            'route'    => '/fighter',
+                            'defaults' => array(
+                                'controller' => 'Contact\Controller\Index',
+                                'action' => 'index',
+                            ),
+                        ),
+                        'may_terminate' => true,
+                        'child_routes' => array(
+                            'add' => array(
+                                'type' => 'literal',
+                                'options' => array(
+                                    'route'    => '/add',
+                                    'defaults' => array(
+                                        'controller' => 'Contact\Controller\Fighter',
+                                        'action' => 'add',
+                                    ),
+                                ),
+                            ),
+                            'edit' => array(
+                                'type' => 'literal',
+                                'options' => array(
+                                    'route'    => '/edit[/:id]',
+                                    'constraints' => array(
+                                        'id'     => '[0-9]+',
+                                    ),
+                                    'defaults' => array(
+                                        'controller' => 'Contact\Controller\Fighter',
+                                        'action' => 'edit',
+                                    ),
+                                ),
+                            ),
+                            'delete' => array(
+                                'type' => 'literal',
+                                'options' => array(
+                                    'route'    => '/delete[/:id]',
+                                    'constraints' => array(
+                                        'id'     => '[0-9]+',
+                                    ),
+                                    'defaults' => array(
+                                        'controller' => 'Contact\Controller\Fighter',
+                                        'action' => 'delete',
+                                    ),
+                                ),
+                            ),
+                        ),
                     ),
                 ),
             ),

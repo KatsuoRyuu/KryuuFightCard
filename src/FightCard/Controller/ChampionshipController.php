@@ -1,4 +1,5 @@
 <?php
+
 namespace FightCard\Controller;
 
 /**
@@ -35,21 +36,52 @@ namespace FightCard\Controller;
  * THE SOFTWARE.
  *
 
- * @version 20140506 
+ * @version 20140527 
  * @link https://github.com/KatsuoRyuu/
  */
 
-use Zend\View\Model\ViewModel;
-use FightCard\Controller\EntityUsingController;
+use FightCard\Controller\EntityUsingController,
+    FightCard\Entity\Championship,
+    DoctrineORMModule\Form\Annotation\AnnotationBuilder;
 
-class IndexController extends EntityUsingController
-{
-	
-	protected $ContactTable;
-	
-    public function indexAction()
-    {
-        return new ViewModel();
+class Championship extends EntityUsingController{
+    
+    public function indexAction(){
+        
     }
     
+    public function addAction(){
+        return $this->editAction();
+    }
+    
+    public function editAction(){
+        $championship = new Championship();
+        
+        if ($this->params('id') > 0){
+            $championship = $this->getEntityManager()->getRepository('FightCard\Entity\Championship')->find($this->params('id'));
+        }
+        
+        $builder = new AnnotationBuilder();
+        $form    = $builder->createForm($championship);
+        $form->bind($championship);
+        
+        $request = $this->getRequest();
+        
+        if ($request->isPost()){
+            
+            $form->bind($championship);
+            $form->setData($request->getPost());
+                       
+            if($form->isValid()){
+                $this->getEntityManager()->persists($championship);
+                $this->getEntityManager()->flush();
+
+                $this->flashMessenger()->addMessage('Championship added');
+
+                return $this->redirect()->toRoute('fightcard/administration');
+            }
+        }
+        
+        
+    }
 }

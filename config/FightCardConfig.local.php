@@ -1,5 +1,6 @@
 <?php
-namespace FightCard\Controller;
+
+namespace FightCard;
 
 /**
  * @encoding UTF-8
@@ -35,21 +36,13 @@ namespace FightCard\Controller;
  * THE SOFTWARE.
  *
 
- * @version 20140506 
+ * @version 20140526 
  * @link https://github.com/KatsuoRyuu/
  */
-
-use Zend\View\Model\ViewModel;
-use FightCard\Controller\EntityUsingController;
-
-class IndexController extends EntityUsingController
-{
-	
-	protected $ContactTable;
-	
-    public function indexAction()
-    {
-        return new ViewModel();
-    }
+return array(
+    __NAMESPACE__ => array(
+        // set the fightcard size, -1 for unlimited.
+        'FightCardSize' => 10,
+    ),
     
-}
+);

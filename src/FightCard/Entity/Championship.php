@@ -1,5 +1,6 @@
 <?php
-namespace FightCard\Controller;
+
+namespace FightCard\Entity;
 
 /**
  * @encoding UTF-8
@@ -35,21 +36,63 @@ namespace FightCard\Controller;
  * THE SOFTWARE.
  *
 
- * @version 20140506 
+ * @version 20140527 
  * @link https://github.com/KatsuoRyuu/
  */
 
-use Zend\View\Model\ViewModel;
-use FightCard\Controller\EntityUsingController;
+use Doctrine\ORM\Mapping as ORM,
+    Zend\Form\Annotation;
 
-class IndexController extends EntityUsingController
-{
-	
-	protected $ContactTable;
-	
-    public function indexAction()
-    {
-        return new ViewModel();
+/**
+ * @Annotation\Name("championship")
+ * @Annotation\Hydrator("Zend\Stdlib\Hydrator\ObjectProperty")
+ * @ORM\Entity
+ * @ORM\Table(name="fightcard_championship")
+ */
+class Championship {
+        
+    /**
+     * @Annotation\Exclude()
+     * 
+     * @ORM\Id
+     * @ORM\GeneratedValue
+     * @ORM\Column(type="integer")
+     * @var integer 
+     */
+    private $id;
+    
+    /**
+     * @Annotation\Type("Zend\Form\Element\Text")
+     * @Annotation\Flags({"priority": 600})
+     * @Annotation\Required({"required":"true" })
+     * @Annotation\Filter({"name":"StringTrim"})
+     * @ Annotation\Validator({"name":"StringLength"})
+     * @Annotation\Options({"label":"Name:"})
+     * @Annotation\Attributes({"required": true,"placeholder": "name ..."})
+     * 
+     * @ORM\Column(type="string")
+     * @var String
+     */
+    private $name;
+    
+        
+    public function __construct() {
+        $this->championships = new ArrayCollection();
     }
     
+    public function __get($key){
+        return $this->$key;
+    }
+    
+    public function __set($value, $key){
+        $this->$key = $value;
+        return $this;
+    }
+    
+    public function __add($value, $key){
+        if ($this->$key == ArrayCollection){
+            $this->$key->add($value);
+        }
+        return $this;
+    }
 }
