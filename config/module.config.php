@@ -25,12 +25,22 @@ return array(
                 ),
                 'may_terminate' => true,
                 'child_routes' => array(
+                    'administration' => array(
+                        'type' => 'literal',
+                        'options' => array(
+                            'route'    => '/administration',
+                            'defaults' => array(
+                                'controller' => 'FightCard\Controller\Administration',
+                                'action' => 'index',
+                            ),
+                        ),
+                    ),
                     'fighter' => array(
                         'type' => 'literal',
                         'options' => array(
                             'route'    => '/fighter',
                             'defaults' => array(
-                                'controller' => 'Contact\Controller\Index',
+                                'controller' => 'FightCard\Controller\Fighter',
                                 'action' => 'index',
                             ),
                         ),
@@ -41,7 +51,7 @@ return array(
                                 'options' => array(
                                     'route'    => '/add',
                                     'defaults' => array(
-                                        'controller' => 'Contact\Controller\Fighter',
+                                        'controller' => 'FightCard\Controller\Fighter',
                                         'action' => 'add',
                                     ),
                                 ),
@@ -54,7 +64,7 @@ return array(
                                         'id'     => '[0-9]+',
                                     ),
                                     'defaults' => array(
-                                        'controller' => 'Contact\Controller\Fighter',
+                                        'controller' => 'FightCard\Controller\Fighter',
                                         'action' => 'edit',
                                     ),
                                 ),
@@ -67,7 +77,56 @@ return array(
                                         'id'     => '[0-9]+',
                                     ),
                                     'defaults' => array(
-                                        'controller' => 'Contact\Controller\Fighter',
+                                        'controller' => 'FightCard\Controller\Fighter',
+                                        'action' => 'delete',
+                                    ),
+                                ),
+                            ),
+                        ),
+                    ),
+                    'championship' => array(
+                        'type' => 'literal',
+                        'options' => array(
+                            'route'    => '/championship',
+                            'defaults' => array(
+                                'controller' => 'FightCard\Controller\Championship',
+                                'action' => 'index',
+                            ),
+                        ),
+                        'may_terminate' => true,
+                        'child_routes' => array(
+                            'add' => array(
+                                'type' => 'literal',
+                                'options' => array(
+                                    'route'    => '/add',
+                                    'defaults' => array(
+                                        'controller' => 'FightCard\Controller\Championship',
+                                        'action' => 'add',
+                                    ),
+                                ),
+                            ),
+                            'edit' => array(
+                                'type' => 'literal',
+                                'options' => array(
+                                    'route'    => '/edit[/:id]',
+                                    'constraints' => array(
+                                        'id'     => '[0-9]+',
+                                    ),
+                                    'defaults' => array(
+                                        'controller' => 'FightCard\Controller\Championship',
+                                        'action' => 'edit',
+                                    ),
+                                ),
+                            ),
+                            'delete' => array(
+                                'type' => 'literal',
+                                'options' => array(
+                                    'route'    => '/delete[/:id]',
+                                    'constraints' => array(
+                                        'id'     => '[0-9]+',
+                                    ),
+                                    'defaults' => array(
+                                        'controller' => 'FightCard\Controller\Championship',
                                         'action' => 'delete',
                                     ),
                                 ),

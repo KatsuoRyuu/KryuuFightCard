@@ -42,9 +42,9 @@ namespace FightCard\Controller;
 
 use FightCard\Controller\EntityUsingController,
     FightCard\Entity\Championship,
-    DoctrineORMModule\Form\Annotation\AnnotationBuilder;
+    Zend\Form\Annotation\AnnotationBuilder;
 
-class Championship extends EntityUsingController{
+class ChampionshipController extends EntityUsingController{
     
     public function indexAction(){
         

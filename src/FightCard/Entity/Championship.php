@@ -41,7 +41,8 @@ namespace FightCard\Entity;
  */
 
 use Doctrine\ORM\Mapping as ORM,
-    Zend\Form\Annotation;
+    Zend\Form\Annotation,
+    Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @Annotation\Name("championship")
