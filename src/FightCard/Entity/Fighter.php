@@ -68,7 +68,7 @@ class Fighter {
      * @Annotation\Required({"required":"true" })
      * @Annotation\Filter({"name":"StringTrim"})
      * @ Annotation\Validator({"name":"StringLength"})
-     * @Annotation\Options({"label":"first name:"})
+     * @Annotation\Options({"label":"First name:"})
      * @Annotation\Attributes({"required": true,"placeholder": "firstname ..."})
      * 
      * @ORM\Column(type="string")

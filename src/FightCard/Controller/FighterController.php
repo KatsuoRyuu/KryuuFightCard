@@ -41,12 +41,15 @@ namespace FightCard\Controller;
  */
 
 use FightCard\Controller\ConstantsController,
-    FightCard\Entity\Championship,
+    FightCard\Entity\Fighter,
     Zend\Form\Annotation\AnnotationBuilder;
 
-class ChampionshipController extends ConstantsController{
+
+class FighterController extends ConstantsController {
     
-    public function indexAction(){
+    
+    public function indexAction() {
+        
         
     }
     
@@ -55,59 +58,59 @@ class ChampionshipController extends ConstantsController{
     }
     
     public function editAction(){
-        $championship = new Championship();
         
-        if ($this->params('id') > 0){
-            $championship = $this->getEntityManager()->getRepository('FightCard\Entity\Championship')->find($this->params('id'));
+        $fighter = new Fighter();
+        
+        if ($this->params('id')){
+            $fighter = $this->getEntityManager()->getRepository(self::FIGHTER)->findBy(array('id'=>$this->params('id')));
         }
         
         $builder = new AnnotationBuilder();
-        $form    = $builder->createForm($championship);
-        $form->bind($championship);
+        $form    = $builder->createForm($fighter);
+        $form->bind($fighter);
         
         $request = $this->getRequest();
         
         if ($request->isPost()){
-            
-            $form->bind($championship);
+            $form->bind($fighter);
             $form->setData($request->getPost());
-                       
+            
             if($form->isValid()){
-                $this->getEntityManager()->persist($championship);
+                $this->getEntityManager()->persist($fighter);
                 $this->getEntityManager()->flush();
-
-                $this->flashMessenger()->addMessage('Championship added');
+                
+                
+                $this->flashMessenger()->addMessage('Fighter added');
 
                 return $this->redirect()->toRoute(self::ADMINISTRATION);
             }
-        }
-        
+        } 
         return array(
             'form'      => $form,
-            'addUrl'    => self::ADD_CHAMPIONSHIP,  
-            'editUrl'   => self::EDIT_CHAMPIONSHIP,  
-        );
-        
+            'addUrl'    => self::ADD_FIGHTER,  
+            'editUrl'   => self::EDIT_FIGHTER,  
+            );
     }
     
     public function deleteAction(){
         
         if($this->params('id')){
-            $championship = $this->getEntityManager()->getRepository(self::CHAMPIONSHIP)->find($this->params('id'));
-            if($championship){
-                $name   = $championship->__get('name');
-                $id     = $championship->__get('id');
-                $this->getEntityManager()->remove($championship);
+            $fighter = $this->getEntityManager()->getRepository(self::FIGHTER)->find($this->params('id'));
+            if($fighter){
+                $name   = $fighter->__get('name');
+                $id     = $fighter->__get('id');
+                $this->getEntityManager()->remove($fighter);
                 $this->getEntityManager()->flush();
                 
-                $this->flashMessenger()->addMessage("Championship $name with id $id has been deleted");
+                $this->flashMessenger()->addMessage("Fighter $name with id $id has been deleted");
                 
                 return $this->redirect()->toRoute(self::ADMINISTRATION);               
             }
         }
          
-        $this->flashMessenger()->addMessage("failed to delete the Championship");
+        $this->flashMessenger()->addMessage("failed to delete the fighter");
         
         return $this->redirect()->toRoute(self::ADMINISTRATION);  
     }
 }
+

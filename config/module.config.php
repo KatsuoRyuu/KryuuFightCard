@@ -57,7 +57,7 @@ return array(
                                 ),
                             ),
                             'edit' => array(
-                                'type' => 'literal',
+                                'type' => 'segment',
                                 'options' => array(
                                     'route'    => '/edit[/:id]',
                                     'constraints' => array(
@@ -70,7 +70,7 @@ return array(
                                 ),
                             ),
                             'delete' => array(
-                                'type' => 'literal',
+                                'type' => 'segment',
                                 'options' => array(
                                     'route'    => '/delete[/:id]',
                                     'constraints' => array(
@@ -106,7 +106,7 @@ return array(
                                 ),
                             ),
                             'edit' => array(
-                                'type' => 'literal',
+                                'type' => 'segment',
                                 'options' => array(
                                     'route'    => '/edit[/:id]',
                                     'constraints' => array(
@@ -119,7 +119,7 @@ return array(
                                 ),
                             ),
                             'delete' => array(
-                                'type' => 'literal',
+                                'type' => 'segment',
                                 'options' => array(
                                     'route'    => '/delete[/:id]',
                                     'constraints' => array(

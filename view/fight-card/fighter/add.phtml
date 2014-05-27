@@ -26,3 +26,29 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 -->
 
+
+<?php
+
+$form = $this->form;
+$form->setAttribute('action', $this->url(
+    $this->addUrl,
+    array(
+        'action'     => 'add'
+    )
+));
+
+$form->add(array(
+    'name'=> 'submit',
+    'type'=> 'Zend\Form\Element\Submit',
+    'attributes'=> array(
+        'value'=> 'Submit',
+        'required'=> 'false',
+        ),
+    )
+);
+
+$form->prepare();
+
+
+ 
+echo $this->ztbForm($form);

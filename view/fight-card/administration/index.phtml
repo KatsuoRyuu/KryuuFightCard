@@ -25,38 +25,55 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 -->
+<h3>Matches</h3>
 
+
+<h3>Championships</h3>
 <a href="<?= $this->url($addChampionship) ?>">Add championship</a>
 <table>
     
     <tr>
         <th>Championships</th>
-        <th rowspan="2">Admin</th>
+        <th colspan="2">Admin</th>
     </tr>
     
     <?php foreach ($championships as $championship) : ?>
     <tr>
-        <td><?php $championship->__get('name') ?></td>
-        <td><?php $this->url($editChampionship,array('id'=>$championship->__get('id'))) ?></td>
-        <td><?php $this->url($deleteChampionship, array('id'=>$championship->__get('id'))) ?></td>
+        <td><?= $championship->__get('name') ?></td>
+        <td><a href="<?= $this->url($editChampionship,array('id'=>$championship->__get('id'))) ?>">Edit</a></td>
+        <td><a href="<?= $this->url($deleteChampionship, array('id'=>$championship->__get('id'))) ?>" onclick="return confirm('Are you sure?')">Delete</a></td>
     </tr>
     <?php endforeach; ?>
     
 </table>
-
+<h3>Fighters</h3>
 <a href="<?= $this->url($addFighter) ?>">Add fighter</a>
 <table>
     
     <tr>
         <th>Fighters</th>
-        <th rowspan="3">Admin</th>
+        <th>Gym</th>
+        <th>Country</th>
+        <th colspan="3">Admin</th>
     </tr>
     
     <?php foreach ($fighters as $fighter) : ?>
     <tr>
-        <td><?php $fighter->__get('name') ?></td>
-        <td><?php $this->url($editFighter,array('id'=>$fighter->__get('id'))) ?></td>
-        <td><?php $this->url($deleteFighter, array('id'=>$fighter->__get('id'))) ?></td>
+        <td><?= $fighter->__get('firstname') ?> <?= $fighter->__get('lastname') ?></td>
+        <td><?= $fighter->__get('gym') ?></td>
+        <td><?= $fighter->__get('country') ?></td>
+        <td><a href="<?= $this->url($editFighter,array('id'=>$fighter->__get('id'))) ?>">Edit</a></td>
+        <td><a href="<?= $this->url($deleteFighter, array('id'=>$fighter->__get('id'))); ?>" onclick="return confirm('Are you sure?')">Delete</a></td>
+    </tr>
+    <tr>
+        <td colspan="3">Wins:<?= $fighter->__get('wins') ?> Loss:<?= $fighter->__get('loss') ?> Draw:<?= $fighter->__get('draw') ?></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td colspan="3"> Championships</td>
+        <td></td>
+        <td></td>
     </tr>
     <?php endforeach; ?>
     

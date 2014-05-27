@@ -40,9 +40,9 @@ namespace FightCard\Controller;
  */
 
 use Zend\View\Model\ViewModel;
-use FightCard\Controller\EntityUsingController;
+use FightCard\Controller\ConstantsController;
 
-class IndexController extends EntityUsingController
+class IndexController extends ConstantsController
 {
 	
 	protected $ContactTable;
