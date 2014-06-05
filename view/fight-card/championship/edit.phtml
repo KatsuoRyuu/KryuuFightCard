@@ -32,6 +32,7 @@ $form = $this->form;
 $form->setAttribute('action', $this->url(
     $this->editUrl,
     array(
+        'id'         => $championship->__get('id'),
         'action'     => 'add'
     )
 ));
@@ -47,7 +48,20 @@ $form->add(array(
 );
 
 $form->prepare();
+?>
 
+<section class="work-wrap clearfix section parallax-background">
+    <header class="item-header-wrap">
+        <div class="item-header screen-large">
+            <div class="logo_content">
+                <h2 class="logo">FightCard Admin</h2>
+            </div>
 
- 
-echo $this->ztbForm($form);
+            <div class="title-shadow"></div>
+        </div>
+    </header>
+
+    <article class="work-content screen-large-portfolio">
+        <?= $this->ztbForm($form); ?>
+    </article>
+</section>

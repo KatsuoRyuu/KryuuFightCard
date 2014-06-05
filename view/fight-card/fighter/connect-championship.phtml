@@ -26,13 +26,15 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 -->
 
+
 <?php
 
 $form = $this->form;
 $form->setAttribute('action', $this->url(
-    $this->addUrl,
+    $connect_championship,
     array(
-        'action'     => 'add'
+        'id'        => $fighter->__get('id'),
+        'action'    => 'connect'
     )
 ));
 
@@ -47,9 +49,8 @@ $form->add(array(
 );
 
 $form->prepare();
-
 ?>
- 
+
 <section class="work-wrap clearfix section parallax-background">
     <header class="item-header-wrap">
         <div class="item-header screen-large">
@@ -62,6 +63,8 @@ $form->prepare();
     </header>
 
     <article class="work-content screen-large-portfolio">
-        <?= $this->ztbForm($form); ?>
+
+        <?= $this->ztbForm($form);?>
+
     </article>
 </section>

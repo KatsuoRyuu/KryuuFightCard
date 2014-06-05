@@ -2,16 +2,21 @@
 
 namespace FightCard;
 
-return array(
+return array(    
+    'FightCard' => array(
+        'config' => array(
+            'fileupload' => true,
+        ),
+    ),
     'controllers' => array(
         'invokables' => array(
             'FightCard\Controller\Index'            => 'FightCard\Controller\IndexController',
             'FightCard\Controller\Administration'   => 'FightCard\Controller\AdministrationController',
             'FightCard\Controller\Championship'     => 'FightCard\Controller\ChampionshipController',
             'FightCard\Controller\Fighter'          => 'FightCard\Controller\FighterController',
+            'FightCard\Controller\Fight'          => 'FightCard\Controller\FightController',
         ),
     ),
-
     'router' => array(
         'routes' => array(
             'fightcard' => array(
@@ -82,6 +87,33 @@ return array(
                                     ),
                                 ),
                             ),
+                            'disconnect-championship' => array(
+                                'type' => 'segment',
+                                'options' => array(
+                                    'route'    => '/disconnect[/:fid][/:cid]',
+                                    'constraints' => array(
+                                        'fid'     => '[0-9]+',
+                                        'cid'     => '[0-9]+',
+                                    ),
+                                    'defaults' => array(
+                                        'controller' => 'FightCard\Controller\Fighter',
+                                        'action' => 'disconnectChampionship',
+                                    ),
+                                ),
+                            ),
+                            'connect-championship' => array(
+                                'type' => 'segment',
+                                'options' => array(
+                                    'route'    => '/connect[/:id]',
+                                    'constraints' => array(
+                                        'id'     => '[0-9]+',
+                                    ),
+                                    'defaults' => array(
+                                        'controller' => 'FightCard\Controller\Fighter',
+                                        'action' => 'connectChampionship',
+                                    ),
+                                ),
+                            ),
                         ),
                     ),
                     'championship' => array(
@@ -127,6 +159,55 @@ return array(
                                     ),
                                     'defaults' => array(
                                         'controller' => 'FightCard\Controller\Championship',
+                                        'action' => 'delete',
+                                    ),
+                                ),
+                            ),
+                        ),
+                    ),
+                    'fight' => array(
+                        'type' => 'literal',
+                        'options' => array(
+                            'route'    => '/fight',
+                            'defaults' => array(
+                                'controller' => 'FightCard\Controller\Fight',
+                                'action' => 'index',
+                            ),
+                        ),
+                        'may_terminate' => true,
+                        'child_routes' => array(
+                            'add' => array(
+                                'type' => 'literal',
+                                'options' => array(
+                                    'route'    => '/add',
+                                    'defaults' => array(
+                                        'controller' => 'FightCard\Controller\Fight',
+                                        'action' => 'add',
+                                    ),
+                                ),
+                            ),
+                            'edit' => array(
+                                'type' => 'segment',
+                                'options' => array(
+                                    'route'    => '/edit[/:id]',
+                                    'constraints' => array(
+                                        'id'     => '[0-9]+',
+                                    ),
+                                    'defaults' => array(
+                                        'controller' => 'FightCard\Controller\Fight',
+                                        'action' => 'edit',
+                                    ),
+                                ),
+                            ),
+                            'delete' => array(
+                                'type' => 'segment',
+                                'options' => array(
+                                    'route'    => '/delete[/:id]',
+                                    'constraints' => array(
+                                        'id'     => '[0-9]+',
+                                    ),
+                                    'defaults' => array(
+                                        'controller' => 'FightCard\Controller\Fight',
                                         'action' => 'delete',
                                     ),
                                 ),

@@ -48,19 +48,29 @@ class AdministrationController extends ConstantsController {
         $fighter = $this->getEntityManager()->getRepository(self::FIGHTER)->findAll();
         
         $championship = $this->getEntityManager()->getRepository(self::CHAMPIONSHIP)->findAll();
+        
+        $fights = $this->getEntityManager()->getRepository(self::FIGHT)->findAll();
 
         return array(
-            'fighters'          =>  $fighter,
-            'championships'     =>  $championship,
-            'administration'    =>  self::ADMINISTRATION,
+            'fighters'                  =>  $fighter,
+            'championships'             =>  $championship,
+            'fights'                    =>  $fights,
+            'administration'            =>  self::ADMINISTRATION,
             
-            'addChampionship'   =>  self::ADD_CHAMPIONSHIP,
-            'editChampionship'  =>  self::EDIT_CHAMPIONSHIP,
-            'deleteChampionship'=>  self::DELETE_CHAMPIONSHIP,
+            'addChampionship'           =>  self::ADD_CHAMPIONSHIP,
+            'editChampionship'          =>  self::EDIT_CHAMPIONSHIP,
+            'deleteChampionship'        =>  self::DELETE_CHAMPIONSHIP,
             
-            'addFighter'        =>  self::ADD_FIGHTER,
-            'editFighter'       =>  self::EDIT_FIGHTER,
-            'deleteFighter'     =>  self::DELETE_FIGHTER,
+            'addFighter'                =>  self::ADD_FIGHTER,
+            'editFighter'               =>  self::EDIT_FIGHTER,
+            'deleteFighter'             =>  self::DELETE_FIGHTER,
+            
+            'disconnect_championship'   =>  self::DISCONNECT_CHAMPIONSHIP,
+            'connect_championship'      =>  self::CONNECT_CHAMPIONSHIP,
+            
+            'addFight'                  =>  self::ADD_FIGHT,
+            'editFight'                 =>  self::EDIT_FIGHT,
+            'deleteFight'               =>  self::DELETE_FIGHT,
         );
     }
 }

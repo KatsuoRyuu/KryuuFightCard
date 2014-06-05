@@ -25,80 +25,130 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 -->
-<h3>Matches</h3>
-<a href="<?= $this->url($createFight) ?>">Create fight</a>
-<table>
-    
-    <tr>
-        <th>Name</th>
-        <th>vs</th>
-        <th>Name</th>
-        <th></th>
-        <th></th>
-    </tr>
-    
-    <?php foreach ($championships as $championship) : ?>
-    <tr>
-        <td><?= $championship->__get('name') ?></td>
-        <td><?= $championship->__get('name') ?></td>
-        <td><?= $championship->__get('name') ?></td>
-        <td><a href="<?= $this->url($editChampionship,array('id'=>$championship->__get('id'))) ?>">Edit</a></td>
-        <td><a href="<?= $this->url($deleteChampionship, array('id'=>$championship->__get('id'))) ?>" onclick="return confirm('Are you sure?')">Delete</a></td>
-    </tr>
-    <?php endforeach; ?>
-    
-</table>
 
+<section class="work-wrap clearfix section parallax-background" id="Biletter"  style="background-image:url('/thaifights/img/bgDust.png');background-color: #FFF;">
+    <header class="item-header-wrap">
+        <div class="item-header screen-large">
+            <div class="logo_content">
+                <h2 class="logo">FightCard Admin</h2>
+            </div>
 
-<h3>Championships</h3>
-<a href="<?= $this->url($addChampionship) ?>">Add championship</a>
-<table>
-    
-    <tr>
-        <th>Name </th>
-        <th colspan="2">Admin</th>
-    </tr>
-    
-    <?php foreach ($championships as $championship) : ?>
-    <tr>
-        <td><?= $championship->__get('name') ?></td>
-        <td><a href="<?= $this->url($editChampionship,array('id'=>$championship->__get('id'))) ?>">Edit</a></td>
-        <td><a href="<?= $this->url($deleteChampionship, array('id'=>$championship->__get('id'))) ?>" onclick="return confirm('Are you sure?')">Delete</a></td>
-    </tr>
-    <?php endforeach; ?>
-    
-</table>
+            <div class="title-shadow"></div>
+        </div>
+    </header>
 
+    <article class="work-content screen-large-portfolio">
+        <h3>Matches</h3>
+        <a href="<?= $this->url($addFight) ?>">Create fight</a>
+        <table class="table">
 
-<h3>Fighters</h3>
-<a href="<?= $this->url($addFighter) ?>">Add fighter</a>
-<table>
-    
-    <tr>
-        <th>Name</th>
-        <th>Gym</th>
-        <th>Country</th>
-        <th colspan="3">Admin</th>
-    </tr>
-    
-    <?php foreach ($fighters as $fighter) : ?>
-    <tr>
-        <td><?= $fighter->__get('firstname') ?> <?= $fighter->__get('lastname') ?></td>
-        <td><?= $fighter->__get('gym') ?></td>
-        <td><?= $fighter->__get('country') ?></td>
-        <td><a href="<?= $this->url($editFighter,array('id'=>$fighter->__get('id'))) ?>">Edit</a></td>
-        <td><a href="<?= $this->url($deleteFighter, array('id'=>$fighter->__get('id'))); ?>" onclick="return confirm('Are you sure?')">Delete</a></td>
-    </tr>
-    <tr>
-        <td colspan="3">Wins:<?= $fighter->__get('wins') ?> Loss:<?= $fighter->__get('loss') ?> Draw:<?= $fighter->__get('draw') ?></td>
-        <td></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td colspan="3"> Championships</td>
-        <td></td>
-        <td></td>
-    </tr>
-    <?php endforeach; ?>
-    
-</table>
+            <tr>
+                <th>Name</th>
+                <th>vs</th>
+                <th>Name</th>
+                <th></th>
+                <th style="width:100px;">Admin</th>
+            </tr>
+
+            <?php foreach ($fights as $fight) : ?>
+            <tr>
+                <td><?= $fight->__get('fighter')->first()->__get('firstname').' '.$fight->__get('fighter')->last()->__get('lastname'); ?></td>
+                <td>VS</td>
+                <td><?= $fight->__get('fighter')->last()->__get('firstname').' '.$fight->__get('fighter')->last()->__get('lastname'); ?></td>
+                <td>
+                    <?php 
+                        switch($fight->__get('priority')):
+                            case 0:
+                                echo 'Primary';
+                            break;
+                            case 1:
+                                echo 'Secondary';
+                            break;
+                            case 2:
+                                echo 'Tertiary';
+                            break;
+                            case 3:
+                                echo 'Quaternary';
+                            break;
+                            case 4:
+                                echo 'Quinary';
+                            break;
+                        endswitch;
+                    ?>
+                </td>
+                <td>
+                    <a href="<?= $this->url($editFight,array('id'=>$fight->__get('id'))) ?>">Edit</a>
+                    <a href="<?= $this->url($deleteFight, array('id'=>$fight->__get('id'))) ?>" onclick="return confirm('Are you sure?')">Delete</a>
+                </td>
+            </tr>
+            <?php endforeach; ?>
+
+        </table>
+
+        <h3>Fighters</h3>
+        <a href="<?= $this->url($addFighter) ?>">Add fighter</a>
+        <table class="table">
+
+            <tr>
+                <th></th>
+                <th>Name</th>
+                <th>Gym</th>
+                <th>Country</th>
+                <th  style="width:100px;">Admin</th>
+            </tr>
+
+            <?php foreach ($fighters as $fighter) : ?>
+            <tr>
+                <td style="width:100px;" rowspan="3">
+                    <?php if ($fighter->__get('image') instanceof FileRepository\Entity\File) : ?>
+                    <img style="height:100px;" title="<?php echo $this->getFileById($fighter->__get('image')->getId())->getName(); ?>" src="<?php echo $this->getFileById($fighter->__get('image')->getId())->getUrl(); ?>"/>
+                    <?php endif ?>
+                </td>
+                <td><?= $fighter->__get('firstname') ?> <?= $fighter->__get('lastname') ?></td>
+                <td><?= $fighter->__get('gym') ?></td>
+                <td><?= $fighter->__get('country') ?></td>
+                <td>
+                    <a href="<?= $this->url($editFighter,array('id'=>$fighter->__get('id'))) ?>">Edit</a>
+                    <a href="<?= $this->url($deleteFighter, array('id'=>$fighter->__get('id'))); ?>" onclick="return confirm('Are you sure?')">Delete</a>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">Wins:<?= $fighter->__get('wins') ?> Loss:<?= $fighter->__get('loss') ?> Draw:<?= $fighter->__get('draw') ?></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Championships</td>
+                <td colspan="2">
+                    <?php foreach($fighter->__get('championships') as $championship): ?>
+                    <a href="<?= $this->url($disconnect_championship,array('fid'=>$fighter->__get('id'),'cid'=>$championship->__get('id'))) ?>" onclick="return confirm('Are you sure?')"><i class="fa fa-trash-o"></i>
+                    </a> <?= $championship->__get('name'); ?>&nbsp;
+                    <?php endforeach; ?>
+                </td>
+                <td><a href="<?= $this->url($connect_championship,array('id'=>$fighter->__get('id'))) ?>">Add</a></td>
+            </tr>
+            <?php endforeach; ?>
+
+        </table>
+        
+        <h3>Championships</h3>
+        <a href="<?= $this->url($addChampionship) ?>">Add championship</a>
+        <table class="table">
+
+            <tr>
+                <th>Name </th>
+                <th style="width:100px;">Admin</th>
+            </tr>
+
+            <?php foreach ($championships as $championship) : ?>
+            <tr>
+                <td><?= $championship->__get('name') ?></td>
+                <td>
+                    <a href="<?= $this->url($editChampionship,array('id'=>$championship->__get('id'))) ?>">Edit</a>
+                    <a href="<?= $this->url($deleteChampionship, array('id'=>$championship->__get('id'))) ?>" onclick="return confirm('Are you sure?')">Delete</a>
+                </td>
+            </tr>
+            <?php endforeach; ?>
+
+        </table>
+    </article>
+</section>

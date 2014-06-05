@@ -44,16 +44,24 @@ use FightCard\Controller\EntityUsingController;
 
 class ConstantsController extends EntityUsingController {
         
-    const ADMINISTRATION        = 'fightcard/administration';
+    const ADMINISTRATION            = 'fightcard/administration';
     
-    const ADD_CHAMPIONSHIP      = 'fightcard/championship/add';
-    const EDIT_CHAMPIONSHIP     = 'fightcard/championship/edit';
-    const DELETE_CHAMPIONSHIP   = 'fightcard/championship/delete';
+    const ADD_CHAMPIONSHIP          = 'fightcard/championship/add';
+    const EDIT_CHAMPIONSHIP         = 'fightcard/championship/edit';
+    const DELETE_CHAMPIONSHIP       = 'fightcard/championship/delete';
     
-    const ADD_FIGHTER           = 'fightcard/fighter/add';
-    const EDIT_FIGHTER          = 'fightcard/fighter/edit';
-    const DELETE_FIGHTER        = 'fightcard/fighter/delete';
+    const ADD_FIGHTER               = 'fightcard/fighter/add';
+    const EDIT_FIGHTER              = 'fightcard/fighter/edit';
+    const DELETE_FIGHTER            = 'fightcard/fighter/delete';
+    
+    const CONNECT_CHAMPIONSHIP      = 'fightcard/fighter/connect-championship';
+    const DISCONNECT_CHAMPIONSHIP   = 'fightcard/fighter/disconnect-championship';
+    
+    const ADD_FIGHT                 = 'fightcard/fight/add';
+    const EDIT_FIGHT                = 'fightcard/fight/edit';
+    const DELETE_FIGHT              = 'fightcard/fight/delete';
 
-    const FIGHTER               = 'FightCard\Entity\Fighter';
-    const CHAMPIONSHIP          = 'FightCard\Entity\Championship';
+    const FIGHTER                   = 'FightCard\Entity\Fighter';
+    const CHAMPIONSHIP              = 'FightCard\Entity\Championship';
+    const FIGHT                     = 'FightCard\Entity\Fight';
 }

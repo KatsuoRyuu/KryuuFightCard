@@ -26,28 +26,43 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 -->
 <?php
-var_dump($this->isAllowed($administration));
+
+$form = $this->form;
+$form->setAttribute('action', $this->url(
+    $this->addUrl,
+    array(
+        'id'         => $fight->__get('id'),
+        'action'     => 'add',
+    )
+));
+
+$form->add(array(
+    'name'=> 'submit',
+    'type'=> 'Zend\Form\Element\Submit',
+    'attributes'=> array(
+        'value'=> 'Submit',
+        'required'=> 'false',
+        ),
+    )
+);
+
+$form->prepare();
 ?>
-<table>
-    
-    <tr>
-        <th>Name</th>
-        <th>Gym</th>
-        <th>Country</th>
-    </tr>
-    
-    <?php foreach ($fighters as $fighter) : ?>
-    <tr>
-        <td><?= $fighter->__get('firstname') ?> <?= $fighter->__get('lastname') ?></td>
-        <td><?= $fighter->__get('gym') ?></td>
-        <td><?= $fighter->__get('country') ?></td>
-    </tr>
-    <tr>
-        <td colspan="3">Wins:<?= $fighter->__get('wins') ?> Loss:<?= $fighter->__get('loss') ?> Draw:<?= $fighter->__get('draw') ?></td>
-    </tr>
-    <tr>
-        <td colspan="3"> Championships</td>
-    </tr>
-    <?php endforeach; ?>
-    
-</table>
+
+<section class="work-wrap clearfix section parallax-background">
+    <header class="item-header-wrap">
+        <div class="item-header screen-large">
+            <div class="logo_content">
+                <h2 class="logo">FightCard Admin</h2>
+            </div>
+
+            <div class="title-shadow"></div>
+        </div>
+    </header>
+
+    <article class="work-content screen-large-portfolio">
+
+        <?= $this->ztbForm($form); ?>
+
+    </article>
+</section>

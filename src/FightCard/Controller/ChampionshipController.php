@@ -64,6 +64,7 @@ class ChampionshipController extends ConstantsController{
         $builder = new AnnotationBuilder();
         $form    = $builder->createForm($championship);
         $form->bind($championship);
+        $form->setData($championship->getArrayCopy());
         
         $request = $this->getRequest();
         
@@ -83,9 +84,10 @@ class ChampionshipController extends ConstantsController{
         }
         
         return array(
-            'form'      => $form,
-            'addUrl'    => self::ADD_CHAMPIONSHIP,  
-            'editUrl'   => self::EDIT_CHAMPIONSHIP,  
+            'form'          => $form,
+            'championship'  => $championship,
+            'addUrl'        => self::ADD_CHAMPIONSHIP,  
+            'editUrl'       => self::EDIT_CHAMPIONSHIP,  
         );
         
     }

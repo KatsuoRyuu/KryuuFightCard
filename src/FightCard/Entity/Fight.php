@@ -36,22 +36,22 @@ namespace FightCard\Entity;
  * THE SOFTWARE.
  *
 
- * @version 20140527 
+ * @version 20140526 
  * @link https://github.com/KatsuoRyuu/
  */
-
 use Doctrine\ORM\Mapping as ORM,
+    Doctrine\Common\Collections\ArrayCollection,
     Zend\Form\Annotation,
-    Doctrine\Common\Collections\ArrayCollection;
+    FightCard\Entity\Championship;
 
 /**
- * @Annotation\Name("championship")
+ * @Annotation\Name("fight")
  * @Annotation\Hydrator("Zend\Stdlib\Hydrator\ObjectProperty")
  * @ORM\Entity
- * @ORM\Table(name="fightcard_championship")
+ * @ORM\Table(name="fightcard_fight")
  */
-class Championship {
-        
+class Fight {
+    
     /**
      * @Annotation\Exclude()
      * 
@@ -63,20 +63,27 @@ class Championship {
     private $id;
     
     /**
-     * @Annotation\Type("Zend\Form\Element\Text")
-     * @Annotation\Flags({"priority": 600})
-     * @Annotation\Required({"required":"true" })
-     * @Annotation\Filter({"name":"StringTrim"})
-     * @ Annotation\Validator({"name":"StringLength"})
-     * @Annotation\Options({"label":"Name:"})
-     * @Annotation\Attributes({"required": true,"placeholder": "name ..."})
+     * @Annotation\Exclude()
      * 
-     * @ORM\Column(type="string")
+     * @ORM\ManyToMany(targetEntity="FightCard\Entity\Fighter")
+     * @ORM\JoinTable(name="fightcard_fight_fighter_linker",
+     *      joinColumns={@ORM\JoinColumn(name="fight_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="fighter_id", referencedColumnName="id")}
+     *      )
      * @var String
      */
-    private $name;
+    private $fighter;
     
-        
+    /**
+     * @Annotation\Type("Zend\Form\Element\Select")
+     * @Annotation\Options({"label":"priority"})
+     * @Annotation\Attributes({"options":{"0":"Primary","1":"Secondary","2":"Tertiary","3":"Quaternary","4":"Quinary"}})
+     * 
+     * @ORM\Column(type="integer")
+     */
+    private $priority;
+
+    
     public function __construct() {
         $this->championships = new ArrayCollection();
     }
@@ -90,10 +97,11 @@ class Championship {
         return $this;
     }
     
-    public function __add($value, $key){        
+    public function __add($value,$key){        
         if(!$this->$key instanceof ArrayCollection && !$this->$key instanceof PersistentCollection) {
             $this->$key = new ArrayCollection();
         }
+        $this->$key->add($value);
         return $this;
     }    
     

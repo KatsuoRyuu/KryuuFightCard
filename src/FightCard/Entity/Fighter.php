@@ -58,7 +58,6 @@ class Fighter {
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @var integer 
      */
     private $id;
     
@@ -72,7 +71,6 @@ class Fighter {
      * @Annotation\Attributes({"required": true,"placeholder": "firstname ..."})
      * 
      * @ORM\Column(type="string")
-     * @var String
      */
     private $firstname;
     
@@ -86,7 +84,6 @@ class Fighter {
      * @Annotation\Attributes({"required": true,"placeholder": "lastname ...."})
      * 
      * @ORM\Column(type="string")
-     * @var String
      */    
     private $lastname;
     
@@ -100,7 +97,6 @@ class Fighter {
      * @Annotation\Attributes({"required": true,"placeholder": "Country"})
      * 
      * @ORM\Column(type="string")
-     * @var String
      */    
     private $country;
     
@@ -114,7 +110,6 @@ class Fighter {
      * @Annotation\Attributes({"required": true,"placeholder": "Gym ..."})
      * 
      * @ORM\Column(type="string")
-     * @var String
      */    
     private $gym;
     
@@ -128,7 +123,6 @@ class Fighter {
      * @Annotation\Attributes({"required": true,"placeholder": "0"})
      * 
      * @ORM\Column(type="integer")
-     * @var String
      */    
     private $wins;
     
@@ -142,7 +136,6 @@ class Fighter {
      * @Annotation\Attributes({"required": true,"placeholder": "0"})
      * 
      * @ORM\Column(type="integer")
-     * @var String
      */    
     private $loss;
     
@@ -156,7 +149,6 @@ class Fighter {
      * @Annotation\Attributes({"required": true,"placeholder": "0"})
      * 
      * @ORM\Column(type="integer")
-     * @var String
      */    
     private $draw;
     
@@ -164,13 +156,23 @@ class Fighter {
      * @Annotation\Exclude()
      * 
      * @var \Doctrine\Common\Collections\Collection
-     * @ORM\ManyToMany(targetEntity="FightCard\Entity\Championship")
-     * @ORM\JoinTable(name="fightcard_fighter_championship_linker",
+     * @ORM\ManyToMany(targetEntity="FightCard\Entity\Championship", cascade={"persist", "remove"})
+     * @ORM\JoinTable(name="fightcard_fighter_championship_linker", 
      *      joinColumns={@ORM\JoinColumn(name="fighter_id", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="championship_id", referencedColumnName="id")}
      * )
      */   
     private $championships;
+    
+    /**
+     * @Annotation\Exclude()
+     *
+     * @ORM\OneToOne(targetEntity="FileRepository\Entity\File")
+     * @ORM\JoinColumn(name="file_id", referencedColumnName="id")
+     */  
+    private $image;
+    
+    
     
     public function __construct() {
         $this->championships = new ArrayCollection();
@@ -185,10 +187,37 @@ class Fighter {
         return $this;
     }
     
-    public function __add($value, $key){
-        if ($this->$key == ArrayCollection){
-            $this->$key->add($value);
-        }
+    public function __add($value,$key){        
+ 
+        $this->$key->add($value);
         return $this;
+    }     
+    
+    /**
+     * WARNING USING THESE IS NOT SAFE. there is no checking on the data and you need to know what
+     * you are doing when using these.
+     * This is used to exchange data from form and more when need to store data in the database.
+     * and again ist made lazy, by using foreach without data checks
+     * 
+     * @param ANY $value
+     * @param ANY $key
+     * @return $value
+     */
+    public function populate($array){
+        foreach ($array as $key => $var){
+            $this->$key = $var;
+        }
     }
+    
+    
+    /**
+    * Get an array copy of object
+    *
+    * @return array
+    */
+    public function getArrayCopy()
+    {
+        return get_object_vars($this);
+    }
+    
 }

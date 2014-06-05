@@ -49,22 +49,91 @@ class IndexController extends ConstantsController
 	
     public function indexAction()
     {
-        $fighter = $this->getEntityManager()->getRepository(self::FIGHTER)->findAll();
+        $primaryFights      = $this->getEntityManager()->getRepository(self::FIGHT)->findBy(array('priority' => 0));
+        $secondaryFights    = $this->getEntityManager()->getRepository(self::FIGHT)->findBy(array('priority' => 1));
+        $tertiaryFights     = $this->getEntityManager()->getRepository(self::FIGHT)->findBy(array('priority' => 2));
+        $quaternaryFights   = $this->getEntityManager()->getRepository(self::FIGHT)->findBy(array('priority' => 3));
+        $quinaryFights      = $this->getEntityManager()->getRepository(self::FIGHT)->findBy(array('priority' => 4));
         
         $championship = $this->getEntityManager()->getRepository(self::CHAMPIONSHIP)->findAll();
 
         return array(
-            'fighters'          =>  $fighter,
-            'championships'     =>  $championship,
-            'administration'    =>  self::ADMINISTRATION,
+            'primaryFights'     => $primaryFights,
+            'secondaryFights'   => $secondaryFights,
+            'tertiaryFights'    => $tertiaryFights,
+            'quaternaryFights'  => $quaternaryFights,
+            'quinaryFights'     => $quinaryFights,
             
-            'addChampionship'   =>  self::ADD_CHAMPIONSHIP,
-            'editChampionship'  =>  self::EDIT_CHAMPIONSHIP,
-            'deleteChampionship'=>  self::DELETE_CHAMPIONSHIP,
+            'championships'     => $championship,
+            'administration'    => self::ADMINISTRATION,
             
-            'addFighter'        =>  self::ADD_FIGHTER,
-            'editFighter'       =>  self::EDIT_FIGHTER,
-            'deleteFighter'     =>  self::DELETE_FIGHTER,
+            'addChampionship'   => self::ADD_CHAMPIONSHIP,
+            'editChampionship'  => self::EDIT_CHAMPIONSHIP,
+            'deleteChampionship'=> self::DELETE_CHAMPIONSHIP,
+            
+            'addFighter'        => self::ADD_FIGHTER,
+            'editFighter'       => self::EDIT_FIGHTER,
+            'deleteFighter'     => self::DELETE_FIGHTER,
+        );
+    }
+    
+    public function primaryIndexAction()
+    {
+        $primaryFights      = $this->getEntityManager()->getRepository(self::FIGHT)->findBy(array('priority' => 0));
+        $secondaryFights    = $this->getEntityManager()->getRepository(self::FIGHT)->findBy(array('priority' => 1));
+        $tertiaryFights     = $this->getEntityManager()->getRepository(self::FIGHT)->findBy(array('priority' => 2));
+        $quaternaryFights   = $this->getEntityManager()->getRepository(self::FIGHT)->findBy(array('priority' => 3));
+        $quinaryFights      = $this->getEntityManager()->getRepository(self::FIGHT)->findBy(array('priority' => 4));
+        
+        $championship = $this->getEntityManager()->getRepository(self::CHAMPIONSHIP)->findAll();
+
+        return array(
+            'primaryFights'     => $primaryFights,
+            'secondaryFights'   => $secondaryFights,
+            'tertiaryFights'    => $tertiaryFights,
+            'quaternaryFights'  => $quaternaryFights,
+            'quinaryFights'     => $quinaryFights,
+            
+            'championships'     => $championship,
+            'administration'    => self::ADMINISTRATION,
+            
+            'addChampionship'   => self::ADD_CHAMPIONSHIP,
+            'editChampionship'  => self::EDIT_CHAMPIONSHIP,
+            'deleteChampionship'=> self::DELETE_CHAMPIONSHIP,
+            
+            'addFighter'        => self::ADD_FIGHTER,
+            'editFighter'       => self::EDIT_FIGHTER,
+            'deleteFighter'     => self::DELETE_FIGHTER,
+        );
+    }
+    
+    public function secondaryIndexAction()
+    {
+        $primaryFights      = $this->getEntityManager()->getRepository(self::FIGHT)->findBy(array('priority' => 0));
+        $secondaryFights    = $this->getEntityManager()->getRepository(self::FIGHT)->findBy(array('priority' => 1));
+        $tertiaryFights     = $this->getEntityManager()->getRepository(self::FIGHT)->findBy(array('priority' => 2));
+        $quaternaryFights   = $this->getEntityManager()->getRepository(self::FIGHT)->findBy(array('priority' => 3));
+        $quinaryFights      = $this->getEntityManager()->getRepository(self::FIGHT)->findBy(array('priority' => 4));
+        
+        $championship = $this->getEntityManager()->getRepository(self::CHAMPIONSHIP)->findAll();
+
+        return array(
+            'primaryFights'     => $primaryFights,
+            'secondaryFights'   => $secondaryFights,
+            'tertiaryFights'    => $tertiaryFights,
+            'quaternaryFights'  => $quaternaryFights,
+            'quinaryFights'     => $quinaryFights,
+            
+            'championships'     => $championship,
+            'administration'    => self::ADMINISTRATION,
+            
+            'addChampionship'   => self::ADD_CHAMPIONSHIP,
+            'editChampionship'  => self::EDIT_CHAMPIONSHIP,
+            'deleteChampionship'=> self::DELETE_CHAMPIONSHIP,
+            
+            'addFighter'        => self::ADD_FIGHTER,
+            'editFighter'       => self::EDIT_FIGHTER,
+            'deleteFighter'     => self::DELETE_FIGHTER,
         );
     }
     
