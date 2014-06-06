@@ -3,18 +3,18 @@
 namespace KryuuFightCard;
 
 return array(    
-    'FightCard' => array(
+    'KryuuFightCard' => array(
         'config' => array(
             'fileupload' => true,
         ),
     ),
     'controllers' => array(
         'invokables' => array(
-            'FightCard\Controller\Index'            => 'FightCard\Controller\IndexController',
-            'FightCard\Controller\Administration'   => 'FightCard\Controller\AdministrationController',
-            'FightCard\Controller\Championship'     => 'FightCard\Controller\ChampionshipController',
-            'FightCard\Controller\Fighter'          => 'FightCard\Controller\FighterController',
-            'FightCard\Controller\Fight'          => 'FightCard\Controller\FightController',
+            'FightCard\Controller\Index'            => 'KryuuFightCard\Controller\IndexController',
+            'FightCard\Controller\Administration'   => 'KryuuFightCard\Controller\AdministrationController',
+            'FightCard\Controller\Championship'     => 'KryuuFightCard\Controller\ChampionshipController',
+            'FightCard\Controller\Fighter'          => 'KryuuFightCard\Controller\FighterController',
+            'FightCard\Controller\Fight'            => 'KryuuFightCard\Controller\FightController',
         ),
     ),
     'router' => array(
