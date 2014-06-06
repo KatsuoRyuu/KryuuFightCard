@@ -1,5 +1,5 @@
 <?php
-namespace KryuuAccessFightCard;
+namespace KryuuFightCard;
 
 class Module
 {
