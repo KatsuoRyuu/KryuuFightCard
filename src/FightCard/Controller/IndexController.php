@@ -1,5 +1,5 @@
 <?php
-namespace FightCard\Controller;
+namespace KryuuFightCard\Controller;
 
 /**
  * @encoding UTF-8
@@ -40,7 +40,7 @@ namespace FightCard\Controller;
  */
 
 use Zend\View\Model\ViewModel;
-use FightCard\Controller\ConstantsController;
+use KryuuFightCard\Controller\ConstantsController;
 
 class IndexController extends ConstantsController
 {

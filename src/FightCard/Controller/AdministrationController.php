@@ -1,5 +1,5 @@
 <?php
-namespace FightCard\Controller;
+namespace KryuuFightCard\Controller;
 
 /**
  * @encoding UTF-8
@@ -39,7 +39,7 @@ namespace FightCard\Controller;
  * @link https://github.com/KatsuoRyuu/
  */
 
-use FightCard\Controller\ConstantsController;
+use KryuuFightCard\Controller\ConstantsController;
 
 class AdministrationController extends ConstantsController {
     

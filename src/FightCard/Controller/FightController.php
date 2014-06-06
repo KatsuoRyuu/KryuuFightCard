@@ -1,6 +1,6 @@
 <?php
 
-namespace FightCard\Controller;
+namespace KryuuFightCard\Controller;
 
 /**
  * @encoding UTF-8
@@ -40,9 +40,9 @@ namespace FightCard\Controller;
  * @link https://github.com/KatsuoRyuu/
  */
 
-use FightCard\Entity\Fighter,
-    FightCard\Entity\Championship,
-    FightCard\Entity\Fight,
+use KryuuFightCard\Entity\Fighter,
+    KryuuFightCard\Entity\Championship,
+    KryuuFightCard\Entity\Fight,
     Zend\Form\Annotation\AnnotationBuilder,
     Zend\View\Model\ViewModel;
 

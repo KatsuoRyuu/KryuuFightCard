@@ -1,6 +1,6 @@
 <?php
 
-namespace FightCard\Entity;
+namespace KryuuFightCard\Entity;
 
 /**
  * @encoding UTF-8

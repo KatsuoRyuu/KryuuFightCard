@@ -1,6 +1,6 @@
 <?php
 
-namespace FightCard\Controller;
+namespace KryuuFightCard\Controller;
 
 /**
  * @encoding UTF-8
@@ -40,7 +40,7 @@ namespace FightCard\Controller;
  * @link https://github.com/KatsuoRyuu/
  */
 
-use FightCard\Controller\EntityUsingController;
+use KryuuFightCard\Controller\EntityUsingController;
 
 class ConstantsController extends EntityUsingController {
         
