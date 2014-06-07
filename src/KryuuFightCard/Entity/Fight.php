@@ -42,7 +42,7 @@ namespace KryuuFightCard\Entity;
 use Doctrine\ORM\Mapping as ORM,
     Doctrine\Common\Collections\ArrayCollection,
     Zend\Form\Annotation,
-    FightCard\Entity\Championship;
+    KryuuFightCard\Entity\Championship;
 
 /**
  * @Annotation\Name("fight")
@@ -65,7 +65,7 @@ class Fight {
     /**
      * @Annotation\Exclude()
      * 
-     * @ORM\ManyToMany(targetEntity="FightCard\Entity\Fighter")
+     * @ORM\ManyToMany(targetEntity="KryuuFightCard\Entity\Fighter")
      * @ORM\JoinTable(name="fightcard_fight_fighter_linker",
      *      joinColumns={@ORM\JoinColumn(name="fight_id", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="fighter_id", referencedColumnName="id")}

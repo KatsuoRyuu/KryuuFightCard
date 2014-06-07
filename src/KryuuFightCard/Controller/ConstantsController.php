@@ -61,7 +61,7 @@ class ConstantsController extends EntityUsingController {
     const EDIT_FIGHT                = 'fightcard/fight/edit';
     const DELETE_FIGHT              = 'fightcard/fight/delete';
 
-    const FIGHTER                   = 'FightCard\Entity\Fighter';
-    const CHAMPIONSHIP              = 'FightCard\Entity\Championship';
-    const FIGHT                     = 'FightCard\Entity\Fight';
+    const FIGHTER                   = 'KryuuFightCard\Entity\Fighter';
+    const CHAMPIONSHIP              = 'KryuuFightCard\Entity\Championship';
+    const FIGHT                     = 'KryuuFightCard\Entity\Fight';
 }

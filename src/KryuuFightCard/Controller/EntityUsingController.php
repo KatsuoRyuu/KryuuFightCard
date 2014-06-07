@@ -1,5 +1,5 @@
 <?php
-namespace FightCard\Controller;
+namespace KryuuFightCard\Controller;
 
 /**
  * @encoding UTF-8
@@ -45,21 +45,6 @@ use Zend\Mail\Transport\SmtpOptions;
 
 class EntityUsingController extends AbstractActionController
 {
-    
-        
-    const ADMINISTRATION        = 'fightcard/administartion';
-    
-    const ADD_CHAMPIONSHIP      = 'fightcard/championship/add';
-    const EDIT_CHAMPIONSHIP     = 'fightcard/championship/edit';
-    const DELETE_CHAMPIONSHIP   = 'fightcard/championship/delete';
-    
-    const ADD_FIGHTER           = 'fightcard/fighter/add';
-    const EDIT_FIGHTER          = 'fightcard/fighter/edit';
-    const DELETE_FIGHTER        = 'fightcard/fighter/delete';
-
-    const FIGHTER               = 'FightCard\Entity\Fighter';
-    const CHAMPIONSHIP          = 'FightCard\Entity\Championship';
-
 	/**
 	* @var EntityManager
 	*/
