@@ -24,9 +24,6 @@
 	"katsuo-ryuu/kryuu-file-repository": "dev-master"
     },
     "autoload": {
-        "psr-0": {
-            "KRyuuFightCard": "src/"
-        },
         "classmap": [
             "./Module.php"
         ]
