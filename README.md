@@ -1,6 +1,11 @@
-# About Alpha Stage 
-# Fight Card for ThaiFight 5000
-[![Latest Unstable Version]
+Fight Card for ThaiFight 5000
+=====
+About Alpha Stage 
+-----
+[![Latest Stable Version](https://poser.pugx.org/katsuo-ryuu/kryuu-language-selector/v/stable.svg)](https://packagist.org/packages/katsuo-ryuu/kryuu-language-selector) 
+[![Total Downloads](https://poser.pugx.org/katsuo-ryuu/kryuu-language-selector/downloads.svg)](https://packagist.org/packages/katsuo-ryuu/kryuu-language-selector) 
+[![Latest Unstable Version](https://poser.pugx.org/katsuo-ryuu/kryuu-language-selector/v/unstable.svg)](https://packagist.org/packages/katsuo-ryuu/kryuu-language-selector) 
+[![License](https://poser.pugx.org/katsuo-ryuu/kryuu-language-selector/license.svg)](https://packagist.org/packages/katsuo-ryuu/kryuu-language-selector)
 This is an "by order" module for ThaiFight 5000 it is build to fit this one scenario and only this.
 
 
