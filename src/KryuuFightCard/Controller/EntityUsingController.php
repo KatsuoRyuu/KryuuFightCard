@@ -133,7 +133,8 @@ class EntityUsingController extends AbstractActionController
 	* @return PostController
 	*/
 	protected function setConfiguration() {
-        $this->configuration = $this->getServiceLocator()->get('config')[$this->getBaseNamespace()]['config'];
+        $tmpConfig = $this->getServiceLocator()->get('config');
+        $this->configuration = $tmpConfig[$this->getBaseNamespace()]['config'];
 		return $this;
 	}
 	
@@ -162,7 +163,8 @@ class EntityUsingController extends AbstractActionController
 		}
         
         if($global){
-            return $this->getServiceLocator()->get('config')[$searchString];
+            $tmpConfig = $this->getServiceLocator()->get('config');
+            return $tmpConfig[$searchString];
         }
         
 		return $this->configuration[$searchString];
@@ -177,15 +179,17 @@ class EntityUsingController extends AbstractActionController
 	* @return PostController
 	*/
 	protected function setMailTransport() {
+        
+        $tmpConfig = $this->getConfiguration('mailTransport');
 
         $this->transport = new SmtpTransport();
         $options   = new SmtpOptions(array(
-            'name'              => $this->getConfiguration('mailTransport')['name'],
-            'host'              => $this->getConfiguration('mailTransport')['host'],
-            'connection_class'  => $this->getConfiguration('mailTransport')['connection_class'],
+            'name'              => $tmpConfig['name'],
+            'host'              => $tmpConfig['host'],
+            'connection_class'  => $tmpConfig['connection_class'],
             'connection_config' => array(
-                'username' => $this->getConfiguration('mailTransport')['connection_config']['username'],
-                'password' => $this->getConfiguration('mailTransport')['connection_config']['password'],
+                'username' => $tmpConfig['connection_config']['username'],
+                'password' => $tmpConfig['connection_config']['password'],
             ),
         ));
         $this->transport->setOptions($options);

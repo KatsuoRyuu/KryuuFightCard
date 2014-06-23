@@ -82,8 +82,8 @@ class FighterController extends ConstantsController {
                     'label' => 'File Upload:', 
                 ), 
             ));
-        
-        if ( $request->getFiles()['file']['tmp_name'] != "" && $this->getConfiguration('fileupload') ){
+        $fileRequest = $request->getFiles();
+        if ( $fileRequest['file']['tmp_name'] != "" && $this->getConfiguration('fileupload') ){
             
             $requestData = array_merge_recursive((array) $request->getPost(),(array) $request->getFiles());
             $isFile  = true;
