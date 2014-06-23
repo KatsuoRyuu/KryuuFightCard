@@ -1,8 +1,8 @@
 {
     "name": "katsuo-ryuu/kryuu-fight-card",
     "description": "A fightcard designed for Thai Fight 5000",
-    "type": "library",
-    "license": "MIT",
+    "type": "module",
+    "license": "Ryuu Technology License",
     "keywords": [
         "zf2",
 	"Script Repository"
