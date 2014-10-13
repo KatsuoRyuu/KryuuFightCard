@@ -10,11 +10,11 @@ return array(
     ),
     'controllers' => array(
         'invokables' => array(
-            'FightCard\Controller\Index'            => 'KryuuFightCard\Controller\IndexController',
-            'FightCard\Controller\Administration'   => 'KryuuFightCard\Controller\AdministrationController',
-            'FightCard\Controller\Championship'     => 'KryuuFightCard\Controller\ChampionshipController',
-            'FightCard\Controller\Fighter'          => 'KryuuFightCard\Controller\FighterController',
-            'FightCard\Controller\Fight'            => 'KryuuFightCard\Controller\FightController',
+            'KryuuFightCard\Controller\Index'            => 'KryuuFightCard\Controller\IndexController',
+            'KryuuFightCard\Controller\Administration'   => 'KryuuFightCard\Controller\AdministrationController',
+            'KryuuFightCard\Controller\Championship'     => 'KryuuFightCard\Controller\ChampionshipController',
+            'KryuuFightCard\Controller\Fighter'          => 'KryuuFightCard\Controller\FighterController',
+            'KryuuFightCard\Controller\Fight'            => 'KryuuFightCard\Controller\FightController',
         ),
     ),
     'router' => array(
@@ -24,7 +24,7 @@ return array(
                 'options' => array(
                     'route' => '/fightcard',
                     'defaults' => array(
-                        'controller'    => 'FightCard\Controller\Index',
+                        'controller'    => 'KryuuFightCard\Controller\Index',
                         'action'        => 'index',
                     ),
                 ),
@@ -35,7 +35,7 @@ return array(
                         'options' => array(
                             'route'    => '/administration',
                             'defaults' => array(
-                                'controller' => 'FightCard\Controller\Administration',
+                                'controller' => 'KryuuFightCard\Controller\Administration',
                                 'action' => 'index',
                             ),
                         ),
@@ -45,7 +45,7 @@ return array(
                         'options' => array(
                             'route'    => '/fighter',
                             'defaults' => array(
-                                'controller' => 'FightCard\Controller\Fighter',
+                                'controller' => 'KryuuFightCard\Controller\Fighter',
                                 'action' => 'index',
                             ),
                         ),
@@ -56,7 +56,7 @@ return array(
                                 'options' => array(
                                     'route'    => '/add',
                                     'defaults' => array(
-                                        'controller' => 'FightCard\Controller\Fighter',
+                                        'controller' => 'KryuuFightCard\Controller\Fighter',
                                         'action' => 'add',
                                     ),
                                 ),
@@ -69,7 +69,7 @@ return array(
                                         'id'     => '[0-9]+',
                                     ),
                                     'defaults' => array(
-                                        'controller' => 'FightCard\Controller\Fighter',
+                                        'controller' => 'KryuuFightCard\Controller\Fighter',
                                         'action' => 'edit',
                                     ),
                                 ),
@@ -82,7 +82,7 @@ return array(
                                         'id'     => '[0-9]+',
                                     ),
                                     'defaults' => array(
-                                        'controller' => 'FightCard\Controller\Fighter',
+                                        'controller' => 'KryuuFightCard\Controller\Fighter',
                                         'action' => 'delete',
                                     ),
                                 ),
@@ -96,7 +96,7 @@ return array(
                                         'cid'     => '[0-9]+',
                                     ),
                                     'defaults' => array(
-                                        'controller' => 'FightCard\Controller\Fighter',
+                                        'controller' => 'KryuuFightCard\Controller\Fighter',
                                         'action' => 'disconnectChampionship',
                                     ),
                                 ),
@@ -109,7 +109,7 @@ return array(
                                         'id'     => '[0-9]+',
                                     ),
                                     'defaults' => array(
-                                        'controller' => 'FightCard\Controller\Fighter',
+                                        'controller' => 'KryuuFightCard\Controller\Fighter',
                                         'action' => 'connectChampionship',
                                     ),
                                 ),
@@ -121,7 +121,7 @@ return array(
                         'options' => array(
                             'route'    => '/championship',
                             'defaults' => array(
-                                'controller' => 'FightCard\Controller\Championship',
+                                'controller' => 'KryuuFightCard\Controller\Championship',
                                 'action' => 'index',
                             ),
                         ),
@@ -132,7 +132,7 @@ return array(
                                 'options' => array(
                                     'route'    => '/add',
                                     'defaults' => array(
-                                        'controller' => 'FightCard\Controller\Championship',
+                                        'controller' => 'KryuuFightCard\Controller\Championship',
                                         'action' => 'add',
                                     ),
                                 ),
@@ -145,7 +145,7 @@ return array(
                                         'id'     => '[0-9]+',
                                     ),
                                     'defaults' => array(
-                                        'controller' => 'FightCard\Controller\Championship',
+                                        'controller' => 'KryuuFightCard\Controller\Championship',
                                         'action' => 'edit',
                                     ),
                                 ),
@@ -158,7 +158,7 @@ return array(
                                         'id'     => '[0-9]+',
                                     ),
                                     'defaults' => array(
-                                        'controller' => 'FightCard\Controller\Championship',
+                                        'controller' => 'KryuuFightCard\Controller\Championship',
                                         'action' => 'delete',
                                     ),
                                 ),
@@ -170,7 +170,7 @@ return array(
                         'options' => array(
                             'route'    => '/fight',
                             'defaults' => array(
-                                'controller' => 'FightCard\Controller\Fight',
+                                'controller' => 'KryuuFightCard\Controller\Fight',
                                 'action' => 'index',
                             ),
                         ),
@@ -181,7 +181,7 @@ return array(
                                 'options' => array(
                                     'route'    => '/add',
                                     'defaults' => array(
-                                        'controller' => 'FightCard\Controller\Fight',
+                                        'controller' => 'KryuuFightCard\Controller\Fight',
                                         'action' => 'add',
                                     ),
                                 ),
@@ -194,7 +194,7 @@ return array(
                                         'id'     => '[0-9]+',
                                     ),
                                     'defaults' => array(
-                                        'controller' => 'FightCard\Controller\Fight',
+                                        'controller' => 'KryuuFightCard\Controller\Fight',
                                         'action' => 'edit',
                                     ),
                                 ),
@@ -207,7 +207,7 @@ return array(
                                         'id'     => '[0-9]+',
                                     ),
                                     'defaults' => array(
-                                        'controller' => 'FightCard\Controller\Fight',
+                                        'controller' => 'KryuuFightCard\Controller\Fight',
                                         'action' => 'delete',
                                     ),
                                 ),
@@ -237,5 +237,5 @@ return array(
         'template_path_stack' => array(
             'fightcard' => __DIR__ . '/../view',
         ),
-    ),
+    ), 
 );

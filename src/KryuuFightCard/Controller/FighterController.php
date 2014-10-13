@@ -55,10 +55,12 @@ class FighterController extends ConstantsController {
     }
     
     public function addAction(){
+        $this->layout('thaifights/layout/single');
         return $this->editAction();
     }
     
     public function editAction(){
+        $this->layout('thaifights/layout/single');
                 
         $fighter = new Fighter();
         $isFile = false;
@@ -121,6 +123,7 @@ class FighterController extends ConstantsController {
     }
     
     public function deleteAction(){
+        $this->layout('thaifights/layout/single');
         
         if($this->params('id')){
             $fighter = $this->getEntityManager()->getRepository(self::FIGHTER)->find($this->params('id'));
@@ -142,6 +145,7 @@ class FighterController extends ConstantsController {
     }
     
     public function connectChampionshipAction(){
+        $this->layout('thaifights/layout/single');
                 
         $fighter = new Fighter();
         
@@ -191,6 +195,7 @@ class FighterController extends ConstantsController {
     }
     
     public function disconnectChampionshipAction(){
+        $this->layout('thaifights/layout/single');
         if($this->params('fid') > 0 && $this->params('cid') > 0){
             $fighter        = $this->getEntityManager()->getRepository(self::FIGHTER)->find($this->params('fid'));
             $championship   = $this->getEntityManager()->getRepository(self::CHAMPIONSHIP)->find($this->params('cid'));

@@ -45,6 +45,8 @@ class AdministrationController extends ConstantsController {
     
     public function indexAction(){
         
+        $this->layout('thaifights/layout/single');
+        
         $fighter = $this->getEntityManager()->getRepository(self::FIGHTER)->findBy(array(), array('firstname' => 'ASC'));
         
         $championship = $this->getEntityManager()->getRepository(self::CHAMPIONSHIP)->findAll();

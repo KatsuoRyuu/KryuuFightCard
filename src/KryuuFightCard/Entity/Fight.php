@@ -82,6 +82,15 @@ class Fight {
      * @ORM\Column(type="integer")
      */
     private $priority;
+    
+    /**
+     * @Annotation\Type("Zend\Form\Element\Select")
+     * @Annotation\Options({"label":"Sorting"})
+     * @Annotation\Attributes({"options":{"0":"0","1":"1","2":"2","3":"3","4":"4","5":"5","6":"6","7":"7","8":"8","9":"9","10":"10","21":"21","22":"22","23":"23","24":"24","25":"25","26":"26","27":"27","28":"28","29":"29","30":"30"}})
+     * 
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $sort;
 
     
     public function __construct() {

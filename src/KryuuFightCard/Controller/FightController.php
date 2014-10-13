@@ -50,10 +50,12 @@ use KryuuFightCard\Entity\Fighter,
 class FightController extends ConstantsController {
     
     public function addAction(){
+        $this->layout('thaifights/layout/single');
         return $this->editAction();
     }
     
     public function editAction(){
+        $this->layout('thaifights/layout/single');
 
         $fight = new Fight();
 
@@ -119,6 +121,7 @@ class FightController extends ConstantsController {
     }
     
     public function deleteAction(){
+        $this->layout('thaifights/layout/single');
                 
         if($this->params('id')){
             $fight = $this->getEntityManager()->getRepository(self::FIGHT)->find($this->params('id'));

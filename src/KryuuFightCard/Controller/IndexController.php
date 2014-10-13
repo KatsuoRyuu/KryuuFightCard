@@ -49,11 +49,11 @@ class IndexController extends ConstantsController
 	
     public function indexAction()
     {
-        $primaryFights      = $this->getEntityManager()->getRepository(self::FIGHT)->findBy(array('priority' => 0));
-        $secondaryFights    = $this->getEntityManager()->getRepository(self::FIGHT)->findBy(array('priority' => 1));
-        $tertiaryFights     = $this->getEntityManager()->getRepository(self::FIGHT)->findBy(array('priority' => 2));
-        $quaternaryFights   = $this->getEntityManager()->getRepository(self::FIGHT)->findBy(array('priority' => 3));
-        $quinaryFights      = $this->getEntityManager()->getRepository(self::FIGHT)->findBy(array('priority' => 4));
+        $primaryFights      = $this->getEntityManager()->getRepository(self::FIGHT)->findBy(array('priority' => 0),array('sort'=>'ASC'));
+        $secondaryFights    = $this->getEntityManager()->getRepository(self::FIGHT)->findBy(array('priority' => 1),array('sort'=>'ASC'));
+        $tertiaryFights     = $this->getEntityManager()->getRepository(self::FIGHT)->findBy(array('priority' => 2),array('sort'=>'ASC'));
+        $quaternaryFights   = $this->getEntityManager()->getRepository(self::FIGHT)->findBy(array('priority' => 3),array('sort'=>'ASC'));
+        $quinaryFights      = $this->getEntityManager()->getRepository(self::FIGHT)->findBy(array('priority' => 4),array('sort'=>'ASC'));
         
         $championship = $this->getEntityManager()->getRepository(self::CHAMPIONSHIP)->findAll();
 
@@ -79,11 +79,11 @@ class IndexController extends ConstantsController
     
     public function primaryIndexAction()
     {
-        $primaryFights      = $this->getEntityManager()->getRepository(self::FIGHT)->findBy(array('priority' => 0));
-        $secondaryFights    = $this->getEntityManager()->getRepository(self::FIGHT)->findBy(array('priority' => 1));
-        $tertiaryFights     = $this->getEntityManager()->getRepository(self::FIGHT)->findBy(array('priority' => 2));
-        $quaternaryFights   = $this->getEntityManager()->getRepository(self::FIGHT)->findBy(array('priority' => 3));
-        $quinaryFights      = $this->getEntityManager()->getRepository(self::FIGHT)->findBy(array('priority' => 4));
+        $primaryFights      = $this->getEntityManager()->getRepository(self::FIGHT)->findBy(array('priority' => 0),array('sort'=>'ASC'));
+        $secondaryFights    = $this->getEntityManager()->getRepository(self::FIGHT)->findBy(array('priority' => 1),array('sort'=>'ASC'));
+        $tertiaryFights     = $this->getEntityManager()->getRepository(self::FIGHT)->findBy(array('priority' => 2),array('sort'=>'ASC'));
+        $quaternaryFights   = $this->getEntityManager()->getRepository(self::FIGHT)->findBy(array('priority' => 3),array('sort'=>'ASC'));
+        $quinaryFights      = $this->getEntityManager()->getRepository(self::FIGHT)->findBy(array('priority' => 4),array('sort'=>'ASC'));
         
         $championship = $this->getEntityManager()->getRepository(self::CHAMPIONSHIP)->findAll();
 
@@ -109,11 +109,41 @@ class IndexController extends ConstantsController
     
     public function secondaryIndexAction()
     {
-        $primaryFights      = $this->getEntityManager()->getRepository(self::FIGHT)->findBy(array('priority' => 0));
-        $secondaryFights    = $this->getEntityManager()->getRepository(self::FIGHT)->findBy(array('priority' => 1));
-        $tertiaryFights     = $this->getEntityManager()->getRepository(self::FIGHT)->findBy(array('priority' => 2));
-        $quaternaryFights   = $this->getEntityManager()->getRepository(self::FIGHT)->findBy(array('priority' => 3));
-        $quinaryFights      = $this->getEntityManager()->getRepository(self::FIGHT)->findBy(array('priority' => 4));
+        $primaryFights      = $this->getEntityManager()->getRepository(self::FIGHT)->findBy(array('priority' => 0),array('sort'=>'ASC'));
+        $secondaryFights    = $this->getEntityManager()->getRepository(self::FIGHT)->findBy(array('priority' => 1),array('sort'=>'ASC'));
+        $tertiaryFights     = $this->getEntityManager()->getRepository(self::FIGHT)->findBy(array('priority' => 2),array('sort'=>'ASC'));
+        $quaternaryFights   = $this->getEntityManager()->getRepository(self::FIGHT)->findBy(array('priority' => 3),array('sort'=>'ASC'));
+        $quinaryFights      = $this->getEntityManager()->getRepository(self::FIGHT)->findBy(array('priority' => 4),array('sort'=>'ASC'));
+        
+        $championship = $this->getEntityManager()->getRepository(self::CHAMPIONSHIP)->findAll();
+
+        return array(
+            'primaryFights'     => $primaryFights,
+            'secondaryFights'   => $secondaryFights,
+            'tertiaryFights'    => $tertiaryFights,
+            'quaternaryFights'  => $quaternaryFights,
+            'quinaryFights'     => $quinaryFights,
+            
+            'championships'     => $championship,
+            'administration'    => self::ADMINISTRATION,
+            
+            'addChampionship'   => self::ADD_CHAMPIONSHIP,
+            'editChampionship'  => self::EDIT_CHAMPIONSHIP,
+            'deleteChampionship'=> self::DELETE_CHAMPIONSHIP,
+            
+            'addFighter'        => self::ADD_FIGHTER,
+            'editFighter'       => self::EDIT_FIGHTER,
+            'deleteFighter'     => self::DELETE_FIGHTER,
+        );
+    }
+    
+    public function tertiaryIndexAction()
+    {
+        $primaryFights      = $this->getEntityManager()->getRepository(self::FIGHT)->findBy(array('priority' => 0),array('sort'=>'ASC'));
+        $secondaryFights    = $this->getEntityManager()->getRepository(self::FIGHT)->findBy(array('priority' => 1),array('sort'=>'ASC'));
+        $tertiaryFights     = $this->getEntityManager()->getRepository(self::FIGHT)->findBy(array('priority' => 2),array('sort'=>'ASC'));
+        $quaternaryFights   = $this->getEntityManager()->getRepository(self::FIGHT)->findBy(array('priority' => 3),array('sort'=>'ASC'));
+        $quinaryFights      = $this->getEntityManager()->getRepository(self::FIGHT)->findBy(array('priority' => 4),array('sort'=>'ASC'));
         
         $championship = $this->getEntityManager()->getRepository(self::CHAMPIONSHIP)->findAll();
 

@@ -172,6 +172,17 @@ class Fighter {
      */  
     private $image;
     
+    /**
+     * @Annotation\Type("Zend\Form\Element\Text")
+     * @Annotation\Flags({"priority": 600})
+     * @Annotation\Required({"required":"false" })
+     * @Annotation\Options({"label":"YouTube:"})
+     * @Annotation\Attributes({"required": false,"placeholder": "youtube link"})
+     * 
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $youtube;
+    
     
     
     public function __construct() {

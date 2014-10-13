@@ -51,10 +51,12 @@ class ChampionshipController extends ConstantsController{
     }
     
     public function addAction(){
+        $this->layout('thaifights/layout/single');
         return $this->editAction();
     }
     
     public function editAction(){
+        $this->layout('thaifights/layout/single');
         $championship = new Championship();
         
         if ($this->params('id') > 0){
@@ -93,6 +95,7 @@ class ChampionshipController extends ConstantsController{
     }
     
     public function deleteAction(){
+        $this->layout('thaifights/layout/single');
         
         if($this->params('id')){
             $championship = $this->getEntityManager()->getRepository(self::CHAMPIONSHIP)->find($this->params('id'));
